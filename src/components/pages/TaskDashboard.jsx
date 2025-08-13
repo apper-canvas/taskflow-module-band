@@ -13,10 +13,9 @@ import { taskService } from "@/services/api/taskService"
 import { filterTasks, sortTasks } from "@/utils/taskHelpers"
 
 const TaskDashboard = () => {
-  const [tasks, setTasks] = useState([])
+const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  
   const [filters, setFilters] = useState({
     searchTerm: "",
     categories: [],
@@ -32,7 +31,7 @@ const TaskDashboard = () => {
     loadTasks()
   }, [])
 
-  const loadTasks = async () => {
+const loadTasks = async () => {
     try {
       setError(null)
       setLoading(true)
@@ -46,7 +45,7 @@ const TaskDashboard = () => {
     }
   }
 
-  const handleAddTask = (newTask) => {
+const handleAddTask = (newTask) => {
     setTasks(prev => [newTask, ...prev])
     setShowAddForm(false)
   }
@@ -81,9 +80,8 @@ const TaskDashboard = () => {
   }
 
   // Apply filters and sorting
-  const filteredTasks = filterTasks(tasks, filters)
+const filteredTasks = filterTasks(tasks, filters)
   const sortedTasks = sortTasks(filteredTasks, sortBy)
-
   if (loading) {
     return <Loading />
   }
@@ -99,7 +97,7 @@ const TaskDashboard = () => {
       className="space-y-8"
     >
       {/* Header with Progress */}
-      <TaskHeader tasks={tasks} />
+<TaskHeader tasks={tasks} />
 
       {/* Controls Section */}
       <div className="space-y-6">
@@ -134,7 +132,7 @@ const TaskDashboard = () => {
           
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 whitespace-nowrap">Sort by:</span>
-            <select
+<select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="select min-w-0 sm:min-w-[140px]"
@@ -163,7 +161,7 @@ const TaskDashboard = () => {
       )}
 
       {/* Task List */}
-      <TaskList
+<TaskList
         tasks={sortedTasks}
         onUpdateTask={handleUpdateTask}
         onDeleteTask={handleDeleteTask}

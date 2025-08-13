@@ -1,42 +1,74 @@
-import { Outlet } from "react-router-dom"
-import { motion } from "framer-motion"
-import ApperIcon from "@/components/ApperIcon"
+import { Outlet } from 'react-router-dom'
+import { useContext } from 'react'
+import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
+import { AuthContext } from '../../App'
+import ApperIcon from '@/components/ApperIcon'
+import Button from '@/components/atoms/Button'
 
-const Layout = () => {
+function Layout() {
+  const { logout } = useContext(AuthContext)
+  const { user } = useSelector((state) => state.user)
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50"
-      >
+      <header className="bg-surface shadow-card border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <ApperIcon name="CheckCircle2" size={18} className="text-white" />
+              <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary-600 rounded-xl flex items-center justify-center">
+                <ApperIcon name="CheckSquare" size={20} className="text-white" />
               </div>
-              <h1 className="text-xl font-bold text-gray-900 font-display">
+              <h1 className="text-xl font-bold font-display text-gray-900">
                 TaskFlow
               </h1>
             </div>
-            
+
+            {/* User Menu */}
             <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-2 text-sm text-gray-600">
-                <ApperIcon name="Zap" size={16} className="text-accent" />
-                <span>Effortless productivity</span>
-              </div>
+              {user && (
+                <div className="hidden sm:flex items-center gap-3">
+                  <div className="text-right">
+                    <p className="text-sm font-medium text-gray-900">
+                      {user.firstName} {user.lastName}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {user.emailAddress}
+                    </p>
+                  </div>
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-medium text-primary">
+                      {user.firstName?.[0]}{user.lastName?.[0]}
+                    </span>
+                  </div>
+                </div>
+              )}
+              
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={logout}
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
+              >
+                <ApperIcon name="LogOut" size={16} />
+                <span className="hidden sm:block">Logout</span>
+              </Button>
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Main Content */}
-      <main className="flex-1">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <Outlet />
-        </div>
+        </motion.div>
       </main>
     </div>
   )

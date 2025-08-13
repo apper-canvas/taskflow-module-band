@@ -13,7 +13,7 @@ const FilterControls = ({ filters, onFiltersChange, taskCount = 0 }) => {
     loadCategories()
   }, [])
 
-  const loadCategories = async () => {
+const loadCategories = async () => {
     try {
       const data = await categoryService.getAll()
       setCategories(data)
@@ -21,7 +21,6 @@ const FilterControls = ({ filters, onFiltersChange, taskCount = 0 }) => {
       console.error("Failed to load categories:", error)
     }
   }
-
   const handleFilterChange = (key, value) => {
     onFiltersChange({
       ...filters,
@@ -37,7 +36,7 @@ const FilterControls = ({ filters, onFiltersChange, taskCount = 0 }) => {
     handleFilterChange("priorities", newPriorities)
   }
 
-  const toggleCategory = (category) => {
+const toggleCategory = (category) => {
     const newCategories = filters.categories.includes(category)
       ? filters.categories.filter(c => c !== category)
       : [...filters.categories, category]
@@ -147,7 +146,7 @@ const FilterControls = ({ filters, onFiltersChange, taskCount = 0 }) => {
           </div>
 
           {/* Category Filters */}
-          {categories.length > 0 && (
+{categories.length > 0 && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Categories

@@ -6,7 +6,7 @@ const CategorySelector = ({ value, onChange, className = "" }) => {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+useEffect(() => {
     loadCategories()
   }, [])
 
@@ -35,7 +35,7 @@ const CategorySelector = ({ value, onChange, className = "" }) => {
       onChange={(e) => onChange(e.target.value || null)}
       className={className}
     >
-      <option value="">No category</option>
+<option value="">No category</option>
       {categories.map((category) => (
         <option key={category.Id} value={category.name}>
           {category.name}

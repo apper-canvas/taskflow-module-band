@@ -43,13 +43,13 @@ const TaskList = ({
   }
 
   // Separate completed and incomplete tasks
-  const incompleteTasks = tasks.filter(task => !task.completed)
+const incompleteTasks = tasks.filter(task => !task.completed)
   const completedTasks = tasks.filter(task => task.completed)
 
   return (
     <motion.div layout className="space-y-6">
       {/* Incomplete Tasks */}
-      {incompleteTasks.length > 0 && (
+{incompleteTasks.length > 0 && (
         <div className="space-y-3">
           <AnimatePresence>
             {incompleteTasks.map((task) => (
@@ -81,7 +81,7 @@ const TaskList = ({
           </div>
           
           <AnimatePresence>
-            {completedTasks.map((task) => (
+{completedTasks.map((task) => (
               <TaskItem
                 key={task.Id}
                 task={task}

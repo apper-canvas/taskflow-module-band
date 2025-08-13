@@ -13,7 +13,7 @@ const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [showActions, setShowActions] = useState(false)
 
-  const handleToggleComplete = async () => {
+const handleToggleComplete = async () => {
     try {
       await onToggleComplete(task.Id, !task.completed)
       
@@ -34,7 +34,7 @@ const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
     setShowActions(false)
   }
 
-  const handleDelete = async () => {
+const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this task?")) {
       try {
         await onDelete(task.Id)
@@ -47,7 +47,7 @@ const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
     setShowActions(false)
   }
 
-  const handleSave = (updatedTask) => {
+const handleSave = (updatedTask) => {
     onUpdate(updatedTask)
     setIsEditing(false)
   }
@@ -56,7 +56,7 @@ const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
     setIsEditing(false)
   }
 
-  if (isEditing) {
+if (isEditing) {
     return (
       <TaskForm
         task={task}
@@ -67,12 +67,11 @@ const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
     )
   }
 
-  const dueDateFormatted = formatDueDate(task.dueDate)
+const dueDateFormatted = formatDueDate(task.dueDate)
   const dueDateColor = getDueDateColor(task.dueDate)
   const isTaskOverdue = isOverdue(task.dueDate)
-
   return (
-    <motion.div
+<motion.div
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
