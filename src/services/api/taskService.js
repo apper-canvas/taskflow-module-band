@@ -14,9 +14,10 @@ class TaskService {
   async getAll() {
     try {
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
+          { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "priority_c" } },
           { field: { Name: "due_date_c" } },
@@ -46,8 +47,9 @@ class TaskService {
 
       // Transform API response to match UI expectations
       return response.data.map(task => ({
-        Id: task.Id,
+Id: task.Id,
         title: task.title_c,
+        description: task.description_c,
         completed: task.completed_c,
         priority: task.priority_c,
         category: task.category_c?.Name,
@@ -68,9 +70,10 @@ class TaskService {
   async getById(id) {
     try {
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
+          { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "priority_c" } },
           { field: { Name: "due_date_c" } },
@@ -92,7 +95,8 @@ class TaskService {
       const task = response.data
       return {
         Id: task.Id,
-        title: task.title_c,
+title: task.title_c,
+        description: task.description_c,
         completed: task.completed_c,
         priority: task.priority_c,
         category: task.category_c?.Name,
@@ -114,8 +118,9 @@ class TaskService {
     try {
       const params = {
         records: [{
-          Name: taskData.title || "New Task",
+Name: taskData.title || "New Task",
           title_c: taskData.title,
+          description_c: taskData.description || null,
           completed_c: false,
           priority_c: taskData.priority,
           due_date_c: taskData.dueDate || null,
@@ -152,7 +157,8 @@ class TaskService {
           const task = successfulRecords[0].data
           return {
             Id: task.Id,
-            title: task.title_c,
+title: task.title_c,
+            description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
             category: task.category_c?.Name,
@@ -181,7 +187,8 @@ class TaskService {
       }
 
       // Map UI field names to database field names
-      if (updates.title !== undefined) updateData.title_c = updates.title
+if (updates.title !== undefined) updateData.title_c = updates.title
+      if (updates.description !== undefined) updateData.description_c = updates.description
       if (updates.completed !== undefined) {
         updateData.completed_c = updates.completed
         updateData.completed_at_c = updates.completed ? new Date().toISOString() : null
@@ -189,7 +196,6 @@ class TaskService {
       if (updates.priority !== undefined) updateData.priority_c = updates.priority
       if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
       if (updates.category !== undefined) updateData.category_c = updates.category
-
       const params = {
         records: [updateData]
       }
@@ -221,7 +227,8 @@ class TaskService {
           const task = successfulUpdates[0].data
           return {
             Id: task.Id,
-            title: task.title_c,
+title: task.title_c,
+            description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
             category: task.category_c?.Name,
@@ -288,7 +295,8 @@ class TaskService {
       const records = ids.map(id => {
         const updateData = { Id: parseInt(id) }
         
-        if (updates.title !== undefined) updateData.title_c = updates.title
+if (updates.title !== undefined) updateData.title_c = updates.title
+        if (updates.description !== undefined) updateData.description_c = updates.description
         if (updates.completed !== undefined) {
           updateData.completed_c = updates.completed
           updateData.completed_at_c = updates.completed ? new Date().toISOString() : null
@@ -296,7 +304,6 @@ class TaskService {
         if (updates.priority !== undefined) updateData.priority_c = updates.priority
         if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
         if (updates.category !== undefined) updateData.category_c = updates.category
-
         return updateData
       })
 
@@ -322,7 +329,8 @@ class TaskService {
           const task = result.data
           return {
             Id: task.Id,
-            title: task.title_c,
+title: task.title_c,
+            description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
             category: task.category_c?.Name,

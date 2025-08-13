@@ -10,8 +10,9 @@ import { taskService } from "@/services/api/taskService"
 import { formatDateForInput } from "@/utils/dateHelpers"
 
 const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: task?.title || "",
+    description: task?.description || "",
     priority: task?.priority || null,
     category: task?.category || null,
     dueDate: task?.dueDate ? formatDateForInput(task.dueDate) : ""
@@ -30,9 +31,10 @@ const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
     setIsSubmitting(true)
 
     try {
-      const taskData = {
+const taskData = {
         ...formData,
         title: formData.title.trim(),
+        description: formData.description.trim(),
         dueDate: formData.dueDate || null
       }
 
@@ -47,9 +49,10 @@ const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
 
       onSave(savedTask)
       
-      if (!isEditing) {
+if (!isEditing) {
         setFormData({
           title: "",
+          description: "",
           priority: null,
           category: null,
           dueDate: ""
@@ -121,6 +124,20 @@ const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
             onChange={(e) => handleInputChange("title", e.target.value)}
             required
             autoFocus={!isEditing}
+/>
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
+          <textarea
+            id="description"
+            value={formData.description}
+            onChange={(e) => handleInputChange('description', e.target.value)}
+            placeholder="Enter task description..."
+            rows={3}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 resize-none"
           />
         </div>
 

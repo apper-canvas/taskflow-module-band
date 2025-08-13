@@ -1,7 +1,8 @@
 [
-  {
+{
     "Id": 1,
     "title": "Review quarterly sales report",
+    "description": "Analyze Q4 revenue trends, compare with last year's performance, and prepare insights for stakeholders meeting next week.",
     "completed": false,
     "priority": "high",
     "category": "Work",
@@ -12,6 +13,7 @@
   {
     "Id": 2,
     "title": "Plan weekend hiking trip",
+    "description": "Research trail options, check weather forecast, prepare gear list, and coordinate with hiking group members.",
     "completed": false,
     "priority": "medium",
     "category": "Personal",
@@ -22,6 +24,7 @@
   {
     "Id": 3,
     "title": "Buy groceries for the week",
+    "description": "Weekly grocery shopping including fresh produce, protein sources, and household essentials. Remember to bring reusable bags.",
     "completed": true,
     "priority": "medium",
     "category": "Shopping",
@@ -32,6 +35,7 @@
   {
     "Id": 4,
     "title": "Schedule dentist appointment",
+    "description": "Book regular dental cleaning and checkup. Call Dr. Smith's office and request early morning slot if available.",
     "completed": false,
     "priority": "high",
     "category": "Health",
@@ -42,6 +46,7 @@
   {
     "Id": 5,
     "title": "Update project documentation",
+    "description": "Review and update API documentation, add new endpoint examples, and ensure all code samples are current.",
     "completed": false,
     "priority": "low",
     "category": "Work",
@@ -52,6 +57,7 @@
   {
     "Id": 6,
     "title": "Call mom for birthday planning",
+    "description": "Discuss surprise party arrangements, finalize guest list, and coordinate with siblings on gift ideas and venue setup.",
     "completed": true,
     "priority": "high",
     "category": "Personal",
@@ -62,6 +68,7 @@
   {
     "Id": 7,
     "title": "Research new laptop options",
+    "description": "Compare latest models for development work, check performance benchmarks, read reviews, and create comparison spreadsheet.",
     "completed": false,
     "priority": "low",
     "category": "Shopping",
@@ -72,6 +79,7 @@
   {
     "Id": 8,
     "title": "Book annual health checkup",
+    "description": "Schedule comprehensive physical exam including blood work, vision test, and discuss preventive care options with doctor.",
     "completed": false,
     "priority": "medium",
     "category": "Health",
@@ -82,6 +90,7 @@
   {
     "Id": 9,
     "title": "Prepare presentation for client meeting",
+    "description": "Create slide deck showcasing project progress, prepare demo environment, and rehearse key talking points for stakeholder presentation.",
     "completed": false,
     "priority": "high",
     "category": "Work",
@@ -92,6 +101,7 @@
   {
     "Id": 10,
     "title": "Clean and organize home office",
+    "description": "Declutter desk space, organize cables and electronics, file important documents, and set up better lighting for video calls.",
     "completed": true,
     "priority": "medium",
     "category": "Personal",
