@@ -44,19 +44,21 @@ const toggleCategory = (category) => {
     handleFilterChange("categories", newCategories)
   }
 
-  const clearAllFilters = () => {
+const clearAllFilters = () => {
     onFiltersChange({
       searchTerm: "",
       categories: [],
       priorities: [],
+      status: [],
       showCompleted: true,
       dateRange: "all"
     })
   }
 
-  const hasActiveFilters = filters.searchTerm || 
+const hasActiveFilters = filters.searchTerm || 
     filters.categories.length > 0 || 
     filters.priorities.length > 0 || 
+    filters.status.length > 0 || 
     !filters.showCompleted || 
     filters.dateRange !== "all"
 
@@ -145,7 +147,7 @@ const toggleCategory = (category) => {
             </div>
           </div>
 
-          {/* Category Filters */}
+{/* Category Filters */}
 {categories.length > 0 && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -167,6 +169,36 @@ const toggleCategory = (category) => {
             </div>
           )}
 
+          {/* Status Filters */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Status
+            </label>
+            <div className="flex gap-2">
+              {["active", "archived"].map((status) => (
+                <Button
+                  key={status}
+                  variant={filters.status.includes(status) ? "primary" : "ghost"}
+                  size="sm"
+                  onClick={() => {
+                    const newStatus = filters.status.includes(status)
+                      ? filters.status.filter(s => s !== status)
+                      : [...filters.status, status]
+                    onFiltersChange({ ...filters, status: newStatus })
+                  }}
+                  className={`capitalize ${
+                    !filters.status.includes(status) 
+                      ? status === "active" 
+                        ? "text-green-600 hover:bg-green-50" 
+                        : "text-gray-600 hover:bg-gray-50"
+                      : ""
+                  }`}
+                >
+                  {status}
+                </Button>
+              ))}
+            </div>
+          </div>
           {/* Show Completed Toggle */}
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-700">Show completed tasks</span>

@@ -1,13 +1,14 @@
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { toast } from "react-toastify"
-import Button from "@/components/atoms/Button"
-import Input from "@/components/atoms/Input"
-import PrioritySelector from "@/components/molecules/PrioritySelector"
-import CategorySelector from "@/components/molecules/CategorySelector"
-import ApperIcon from "@/components/ApperIcon"
-import { taskService } from "@/services/api/taskService"
-import { formatDateForInput } from "@/utils/dateHelpers"
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { taskService } from "@/services/api/taskService";
+import ApperIcon from "@/components/ApperIcon";
+import PrioritySelector from "@/components/molecules/PrioritySelector";
+import CategorySelector from "@/components/molecules/CategorySelector";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
+import Input from "@/components/atoms/Input";
+import { formatDateForInput } from "@/utils/dateHelpers";
 
 const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
 const [formData, setFormData] = useState({
@@ -15,11 +16,11 @@ const [formData, setFormData] = useState({
     description: task?.description || "",
     priority: task?.priority || null,
     category: task?.category || null,
+    status: task?.status || "active",
     dueDate: task?.dueDate ? formatDateForInput(task.dueDate) : ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [expanded, setExpanded] = useState(isEditing)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     
@@ -35,6 +36,7 @@ const taskData = {
         ...formData,
         title: formData.title.trim(),
         description: formData.description.trim(),
+        status: formData.status,
         dueDate: formData.dueDate || null
       }
 
@@ -55,6 +57,7 @@ if (!isEditing) {
           description: "",
           priority: null,
           category: null,
+          status: "active",
           dueDate: ""
         })
         setExpanded(false)
@@ -142,7 +145,7 @@ if (!isEditing) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
+<div>
             <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-2">
               Priority
             </label>
@@ -160,6 +163,21 @@ if (!isEditing) {
               value={formData.category}
               onChange={(value) => handleInputChange("category", value)}
             />
+          </div>
+
+          <div>
+            <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-2">
+              Status
+            </label>
+            <Select
+              id="status"
+              value={formData.status}
+              onChange={(e) => handleInputChange("status", e.target.value)}
+              className="w-full"
+            >
+              <option value="active">Active</option>
+              <option value="archived">Archived</option>
+            </Select>
           </div>
 
           <div>

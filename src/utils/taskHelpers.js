@@ -79,6 +79,11 @@ export const filterTasks = (tasks, filters) => {
       return false
     }
     
+    // Status filter
+    if (filters.status.length > 0 && !filters.status.includes(task.status)) {
+      return false
+    }
+    
     // Completed filter
     if (!filters.showCompleted && task.completed) {
       return false

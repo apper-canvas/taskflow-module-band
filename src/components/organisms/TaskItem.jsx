@@ -97,7 +97,7 @@ const dueDateFormatted = formatDueDate(task.dueDate)
             {task.title}
           </h3>
 
-          <div className="flex items-center gap-2 mt-2 flex-wrap">
+<div className="flex items-center gap-2 mt-2 flex-wrap">
             {task.priority && (
               <Badge variant={task.priority} size="sm">
                 {task.priority}
@@ -111,6 +111,20 @@ const dueDateFormatted = formatDueDate(task.dueDate)
               >
                 <ApperIcon name="Tag" size={12} className="mr-1" />
                 {task.category}
+              </Badge>
+            )}
+
+            {task.status && (
+              <Badge
+                size="sm"
+                className={`${
+                  task.status === "active" 
+                    ? "bg-green-100 text-green-800" 
+                    : "bg-gray-100 text-gray-800"
+                } border-0`}
+              >
+                <ApperIcon name="Circle" size={12} className="mr-1" />
+                {task.status}
               </Badge>
             )}
 

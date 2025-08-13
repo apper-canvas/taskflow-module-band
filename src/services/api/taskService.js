@@ -20,6 +20,7 @@ fields: [
           { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "priority_c" } },
+          { field: { Name: "status_c" } },
           { field: { Name: "due_date_c" } },
           { field: { Name: "created_at_c" } },
           { field: { Name: "completed_at_c" } },
@@ -46,12 +47,13 @@ fields: [
       }
 
       // Transform API response to match UI expectations
-      return response.data.map(task => ({
+return response.data.map(task => ({
 Id: task.Id,
         title: task.title_c,
         description: task.description_c,
         completed: task.completed_c,
         priority: task.priority_c,
+        status: task.status_c,
         category: task.category_c?.Name,
         dueDate: task.due_date_c,
         createdAt: task.created_at_c,
@@ -76,6 +78,7 @@ fields: [
           { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "priority_c" } },
+          { field: { Name: "status_c" } },
           { field: { Name: "due_date_c" } },
           { field: { Name: "created_at_c" } },
           { field: { Name: "completed_at_c" } },
@@ -93,12 +96,13 @@ fields: [
       }
 
       const task = response.data
-      return {
+return {
         Id: task.Id,
 title: task.title_c,
         description: task.description_c,
         completed: task.completed_c,
         priority: task.priority_c,
+        status: task.status_c,
         category: task.category_c?.Name,
         dueDate: task.due_date_c,
         createdAt: task.created_at_c,
@@ -123,6 +127,7 @@ Name: taskData.title || "New Task",
           description_c: taskData.description || null,
           completed_c: false,
           priority_c: taskData.priority,
+          status_c: taskData.status || "active",
           due_date_c: taskData.dueDate || null,
           created_at_c: new Date().toISOString(),
           completed_at_c: null,
@@ -161,6 +166,7 @@ title: task.title_c,
             description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
+            status: task.status_c,
             category: task.category_c?.Name,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,
@@ -194,6 +200,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
         updateData.completed_at_c = updates.completed ? new Date().toISOString() : null
       }
       if (updates.priority !== undefined) updateData.priority_c = updates.priority
+      if (updates.status !== undefined) updateData.status_c = updates.status
       if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
       if (updates.category !== undefined) updateData.category_c = updates.category
       const params = {
@@ -226,11 +233,12 @@ if (updates.title !== undefined) updateData.title_c = updates.title
         if (successfulUpdates.length > 0) {
           const task = successfulUpdates[0].data
           return {
-            Id: task.Id,
+Id: task.Id,
 title: task.title_c,
             description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
+            status: task.status_c,
             category: task.category_c?.Name,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,
@@ -302,6 +310,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
           updateData.completed_at_c = updates.completed ? new Date().toISOString() : null
         }
         if (updates.priority !== undefined) updateData.priority_c = updates.priority
+        if (updates.status !== undefined) updateData.status_c = updates.status
         if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
         if (updates.category !== undefined) updateData.category_c = updates.category
         return updateData
@@ -328,11 +337,12 @@ if (updates.title !== undefined) updateData.title_c = updates.title
         return successfulUpdates.map(result => {
           const task = result.data
           return {
-            Id: task.Id,
+Id: task.Id,
 title: task.title_c,
             description: task.description_c,
             completed: task.completed_c,
             priority: task.priority_c,
+            status: task.status_c,
             category: task.category_c?.Name,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,

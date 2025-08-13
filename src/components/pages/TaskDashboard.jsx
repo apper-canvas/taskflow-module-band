@@ -16,10 +16,11 @@ const TaskDashboard = () => {
 const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [filters, setFilters] = useState({
+const [filters, setFilters] = useState({
     searchTerm: "",
     categories: [],
     priorities: [],
+    status: [],
     showCompleted: true,
     dateRange: "all"
   })
