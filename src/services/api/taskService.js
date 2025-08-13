@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify'
-
+import { isExpired } from '@/utils/dateHelpers'
 class TaskService {
   constructor() {
     // Initialize ApperClient
@@ -53,7 +53,7 @@ Id: task.Id,
         description: task.description_c,
         completed: task.completed_c,
         priority: task.priority_c,
-        status: task.status_c,
+        status: !task.completed_c && isExpired(task.due_date_c) ? 'expired' : task.status_c,
         category: task.category_c?.Name,
         dueDate: task.due_date_c,
         createdAt: task.created_at_c,

@@ -114,16 +114,22 @@ const dueDateFormatted = formatDueDate(task.dueDate)
               </Badge>
             )}
 
-            {task.status && (
+{task.status && (
               <Badge
                 size="sm"
                 className={`${
                   task.status === "active" 
                     ? "bg-green-100 text-green-800" 
+                    : task.status === "expired"
+                    ? "bg-red-100 text-red-800"
                     : "bg-gray-100 text-gray-800"
                 } border-0`}
               >
-                <ApperIcon name="Circle" size={12} className="mr-1" />
+                <ApperIcon 
+                  name={task.status === "expired" ? "Clock" : "Circle"} 
+                  size={12} 
+                  className="mr-1" 
+                />
                 {task.status}
               </Badge>
             )}

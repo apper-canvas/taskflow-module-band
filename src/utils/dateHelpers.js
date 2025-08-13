@@ -16,11 +16,19 @@ export const formatDueDate = (dateString) => {
   }
 }
 
-export const isOverdue = (dateString) => {
+export const isExpired = (dateString) => {
   if (!dateString) return false
-  const date = typeof dateString === "string" ? parseISO(dateString) : dateString
-  return isPast(date) && !isToday(date)
+  try {
+    const date = typeof dateString === "string" ? parseISO(dateString) : dateString
+    return isPast(date) && !isToday(date)
+  } catch (error) {
+    console.error('Error parsing date:', error)
+    return false
+  }
 }
+
+// Keep the old function name for backward compatibility
+export const isOverdue = isExpired
 
 export const getDueDateColor = (dateString) => {
   if (!dateString) return "text-gray-500"
