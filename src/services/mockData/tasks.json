@@ -1,11 +1,12 @@
 [
 {
-    "Id": 1,
+"Id": 1,
     "title": "Review quarterly sales report",
     "description": "Analyze Q4 revenue trends, compare with last year's performance, and prepare insights for stakeholders meeting next week.",
     "completed": false,
     "priority": "high",
     "category": "Work",
+    "tags": "urgent,quarterly,analysis,stakeholders",
     "dueDate": "2024-01-15",
     "createdAt": "2024-01-10T09:00:00.000Z",
     "completedAt": null
@@ -17,6 +18,7 @@
     "completed": false,
     "priority": "medium",
     "category": "Personal",
+    "tags": "outdoor,recreation,planning,weekend",
     "dueDate": "2024-01-20",
     "createdAt": "2024-01-10T10:30:00.000Z",
     "completedAt": null
@@ -28,6 +30,7 @@
     "completed": true,
     "priority": "medium",
     "category": "Shopping",
+    "tags": "weekly,groceries,essentials,eco-friendly",
     "dueDate": "2024-01-12",
     "createdAt": "2024-01-09T08:15:00.000Z",
     "completedAt": "2024-01-11T16:45:00.000Z"
@@ -39,6 +42,7 @@
     "completed": false,
     "priority": "high",
     "category": "Health",
+    "tags": "dental,health,appointment,routine",
     "dueDate": "2024-01-16",
     "createdAt": "2024-01-08T14:20:00.000Z",
     "completedAt": null
@@ -50,6 +54,7 @@
     "completed": false,
     "priority": "low",
     "category": "Work",
+    "tags": "documentation,api,review,technical",
     "dueDate": "2024-01-25",
     "createdAt": "2024-01-07T11:45:00.000Z",
     "completedAt": null
@@ -61,6 +66,7 @@
     "completed": true,
     "priority": "high",
     "category": "Personal",
+    "tags": "family,birthday,planning,celebration",
     "dueDate": "2024-01-10",
     "createdAt": "2024-01-06T09:30:00.000Z",
     "completedAt": "2024-01-09T19:20:00.000Z"
@@ -72,6 +78,7 @@
     "completed": false,
     "priority": "low",
     "category": "Shopping",
+    "tags": "research,technology,development,comparison",
     "dueDate": null,
     "createdAt": "2024-01-05T13:15:00.000Z",
     "completedAt": null
@@ -83,6 +90,7 @@
     "completed": false,
     "priority": "medium",
     "category": "Health",
+    "tags": "annual,health,checkup,preventive",
     "dueDate": "2024-01-30",
     "createdAt": "2024-01-04T16:00:00.000Z",
     "completedAt": null
@@ -94,6 +102,7 @@
     "completed": false,
     "priority": "high",
     "category": "Work",
+    "tags": "presentation,client,demo,preparation",
     "dueDate": "2024-01-18",
     "createdAt": "2024-01-03T10:45:00.000Z",
     "completedAt": null
@@ -105,6 +114,7 @@
     "completed": true,
     "priority": "medium",
     "category": "Personal",
+    "tags": "organization,office,declutter,productivity",
     "dueDate": null,
     "createdAt": "2024-01-02T12:30:00.000Z",
     "completedAt": "2024-01-08T14:15:00.000Z"

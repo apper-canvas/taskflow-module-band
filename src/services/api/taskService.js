@@ -16,6 +16,7 @@ class TaskService {
       const params = {
 fields: [
           { field: { Name: "Name" } },
+          { field: { Name: "Tags" } },
           { field: { Name: "title_c" } },
           { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
@@ -55,6 +56,7 @@ Id: task.Id,
         priority: task.priority_c,
         status: !task.completed_c && isExpired(task.due_date_c) ? 'expired' : task.status_c,
         category: task.category_c?.Name,
+        tags: task.Tags,
         dueDate: task.due_date_c,
         createdAt: task.created_at_c,
         completedAt: task.completed_at_c
@@ -74,6 +76,7 @@ Id: task.Id,
       const params = {
 fields: [
           { field: { Name: "Name" } },
+          { field: { Name: "Tags" } },
           { field: { Name: "title_c" } },
           { field: { Name: "description_c" } },
           { field: { Name: "completed_c" } },
@@ -104,6 +107,7 @@ title: task.title_c,
         priority: task.priority_c,
         status: task.status_c,
         category: task.category_c?.Name,
+        tags: task.Tags,
         dueDate: task.due_date_c,
         createdAt: task.created_at_c,
         completedAt: task.completed_at_c
@@ -123,6 +127,7 @@ title: task.title_c,
       const params = {
         records: [{
 Name: taskData.title || "New Task",
+          Tags: taskData.tags || null,
           title_c: taskData.title,
           description_c: taskData.description || null,
           completed_c: false,
@@ -160,7 +165,7 @@ Name: taskData.title || "New Task",
 
         if (successfulRecords.length > 0) {
           const task = successfulRecords[0].data
-          return {
+return {
             Id: task.Id,
 title: task.title_c,
             description: task.description_c,
@@ -168,6 +173,7 @@ title: task.title_c,
             priority: task.priority_c,
             status: task.status_c,
             category: task.category_c?.Name,
+            tags: task.Tags,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c
@@ -203,6 +209,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
       if (updates.status !== undefined) updateData.status_c = updates.status
       if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
       if (updates.category !== undefined) updateData.category_c = updates.category
+      if (updates.tags !== undefined) updateData.Tags = updates.tags
       const params = {
         records: [updateData]
       }
@@ -240,6 +247,7 @@ title: task.title_c,
             priority: task.priority_c,
             status: task.status_c,
             category: task.category_c?.Name,
+            tags: task.Tags,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c
@@ -313,6 +321,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
         if (updates.status !== undefined) updateData.status_c = updates.status
         if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
         if (updates.category !== undefined) updateData.category_c = updates.category
+        if (updates.tags !== undefined) updateData.Tags = updates.tags
         return updateData
       })
 
@@ -336,7 +345,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
 
         return successfulUpdates.map(result => {
           const task = result.data
-          return {
+return {
 Id: task.Id,
 title: task.title_c,
             description: task.description_c,
@@ -344,6 +353,7 @@ title: task.title_c,
             priority: task.priority_c,
             status: task.status_c,
             category: task.category_c?.Name,
+            tags: task.Tags,
             dueDate: task.due_date_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c

@@ -17,7 +17,8 @@ const [formData, setFormData] = useState({
     priority: task?.priority || null,
     category: task?.category || null,
     status: task?.status || "active",
-    dueDate: task?.dueDate ? formatDateForInput(task.dueDate) : ""
+    dueDate: task?.dueDate ? formatDateForInput(task.dueDate) : "",
+    tags: task?.tags || ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [expanded, setExpanded] = useState(isEditing)
@@ -37,7 +38,8 @@ const taskData = {
         title: formData.title.trim(),
         description: formData.description.trim(),
         status: formData.status,
-        dueDate: formData.dueDate || null
+        dueDate: formData.dueDate || null,
+        tags: formData.tags.trim()
       }
 
       let savedTask
@@ -52,13 +54,14 @@ const taskData = {
       onSave(savedTask)
       
 if (!isEditing) {
-        setFormData({
+setFormData({
           title: "",
           description: "",
           priority: null,
           category: null,
           status: "active",
-          dueDate: ""
+          dueDate: "",
+          tags: ""
         })
         setExpanded(false)
       }
@@ -193,7 +196,19 @@ if (!isEditing) {
             />
           </div>
         </div>
-
+<div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">
+              <ApperIcon name="Tag" size={16} className="inline mr-1" />
+              Tags
+            </label>
+            <Input
+              value={formData.tags}
+              onChange={(e) => handleInputChange("tags", e.target.value)}
+              placeholder="Enter tags separated by commas (e.g., urgent, work, review)"
+              className="w-full"
+            />
+            <p className="text-xs text-gray-500">Separate multiple tags with commas</p>
+          </div>
         <div className="flex justify-end gap-3 pt-2">
           {!isEditing && (
             <Button

@@ -98,6 +98,17 @@ const dueDateFormatted = formatDueDate(task.dueDate)
           </h3>
 
 <div className="flex items-center gap-2 mt-2 flex-wrap">
+            {task.tags && task.tags.split(',').filter(tag => tag.trim()).map((tag, index) => (
+              <Badge
+                key={index}
+                size="sm"
+                className="bg-blue-50 text-blue-700 border-blue-200 border-0"
+              >
+                <ApperIcon name="Hash" size={10} className="mr-1" />
+                {tag.trim()}
+              </Badge>
+            ))}
+
             {task.priority && (
               <Badge variant={task.priority} size="sm">
                 {task.priority}
