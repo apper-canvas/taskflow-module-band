@@ -174,8 +174,9 @@ if (!isEditing) {
               value={formData.status}
               onChange={(e) => handleInputChange("status", e.target.value)}
               className="w-full"
-            >
+>
               <option value="active">Active</option>
+              <option value="completed">Completed</option>
               <option value="archived">Archived</option>
             </Select>
           </div>
