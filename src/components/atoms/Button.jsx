@@ -13,13 +13,13 @@ const Button = forwardRef(({
 }, ref) => {
   const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50"
   
-  const variants = {
-    primary: "bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-soft hover:shadow-card-hover",
-    secondary: "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 hover:border-gray-300",
-    accent: "bg-gradient-to-r from-accent to-accent-600 hover:from-accent-600 hover:to-orange-500 text-white shadow-soft hover:shadow-card-hover",
-    outline: "border-2 border-primary text-primary hover:bg-primary hover:text-white",
-    ghost: "text-gray-600 hover:text-gray-800 hover:bg-gray-100",
-    danger: "bg-red-500 hover:bg-red-600 text-white"
+const variants = {
+    primary: "bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-sm hover:shadow-md",
+    secondary: "bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200 hover:border-gray-300",
+    accent: "bg-gradient-to-r from-accent to-accent-600 hover:from-accent-600 hover:to-purple-600 text-white shadow-sm hover:shadow-md",
+    outline: "border border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-gray-400",
+    ghost: "text-gray-500 hover:text-gray-700 hover:bg-gray-50",
+    danger: "bg-red-500 hover:bg-red-600 text-white shadow-sm"
   }
   
   const sizes = {

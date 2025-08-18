@@ -8,41 +8,41 @@ export default {
     extend: {
 colors: {
         primary: {
-          DEFAULT: '#1E40AF',
-          50: '#EFF6FF',
-          100: '#DBEAFE',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8'
+          DEFAULT: '#64748B',
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          500: '#64748B',
+          600: '#475569',
+          700: '#334155'
         },
         secondary: {
-          DEFAULT: '#60A5FA',
-          100: '#F0F9FF',
-          500: '#60A5FA'
+          DEFAULT: '#94A3B8',
+          100: '#F1F5F9',
+          500: '#94A3B8'
         },
         accent: {
-          DEFAULT: '#06B6D4',
-          100: '#CFFAFE',
-          500: '#06B6D4',
-          600: '#0891B2'
+          DEFAULT: '#8B5CF6',
+          100: '#F3F4F6',
+          500: '#8B5CF6',
+          600: '#7C3AED'
         },
         surface: '#FFFFFF',
-        background: '#F8F9FB',
-        success: '#10B981',
+        background: '#FAFAFA',
+        success: '#22C55E',
         warning: '#F59E0B',
         error: '#EF4444',
-        info: '#3B82F6',
+        info: '#64748B',
         gray: {
-          50: '#F9FAFB',
-          100: '#F3F4F6',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          500: '#6B7280',
-          600: '#4B5563',
-          700: '#374151',
-          800: '#1F2937',
-          900: '#111827'
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+          700: '#334155',
+          800: '#1E293B',
+          900: '#0F172A'
         }
       },
       fontFamily: {

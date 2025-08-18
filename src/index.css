@@ -46,7 +46,7 @@
   }
   
   body {
-    @apply text-gray-800 bg-background;
+    @apply text-gray-700 bg-background;
   }
 }
 
@@ -56,15 +56,15 @@
   }
   
   .btn-primary {
-    @apply bg-primary hover:bg-primary-600 text-white shadow-soft hover:shadow-card-hover transform hover:scale-[1.02];
+    @apply bg-primary hover:bg-primary-600 text-white shadow-soft hover:shadow-card-hover transform hover:scale-[1.01];
   }
   
   .btn-secondary {
-    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200;
+    @apply bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200 hover:border-gray-300;
   }
   
   .btn-accent {
-    @apply bg-accent hover:bg-accent-600 text-white shadow-soft hover:shadow-card-hover transform hover:scale-[1.02];
+    @apply bg-accent hover:bg-accent-600 text-white shadow-soft hover:shadow-card-hover transform hover:scale-[1.01];
   }
   
   .card {
@@ -72,27 +72,27 @@
   }
   
   .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200;
+    @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/15 focus:border-primary outline-none transition-all duration-200;
   }
   
   .select {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 bg-white;
+    @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/15 focus:border-primary outline-none transition-all duration-200 bg-white;
   }
   
   .priority-high {
-    @apply bg-red-100 text-red-800 border-red-200;
+    @apply bg-red-50 text-red-700 border-red-200;
   }
   
   .priority-medium {
-    @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+    @apply bg-amber-50 text-amber-700 border-amber-200;
   }
   
   .priority-low {
-    @apply bg-green-100 text-green-800 border-green-200;
+    @apply bg-green-50 text-green-700 border-green-200;
   }
   
   .category-tag {
-    @apply px-2 py-1 text-xs font-medium rounded-md bg-opacity-20;
+    @apply px-2 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-600;
   }
 }
 

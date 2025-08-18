@@ -11,16 +11,16 @@ const Badge = forwardRef(({
   const baseStyles = "inline-flex items-center font-medium rounded-full border"
   
   const variants = {
-    default: "bg-gray-100 text-gray-800 border-gray-200",
-    primary: "bg-primary/10 text-primary border-primary/20",
-    secondary: "bg-secondary/10 text-secondary border-secondary/20",
-    accent: "bg-accent/10 text-accent border-accent/20",
-    success: "bg-green-100 text-green-800 border-green-200",
-    warning: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    error: "bg-red-100 text-red-800 border-red-200",
-    high: "bg-red-100 text-red-800 border-red-200",
-    medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    low: "bg-green-100 text-green-800 border-green-200"
+default: "bg-gray-50 text-gray-600 border-gray-200",
+    primary: "bg-primary/5 text-primary border-primary/15",
+    secondary: "bg-gray-50 text-gray-500 border-gray-200",
+    accent: "bg-accent/5 text-accent border-accent/15",
+    success: "bg-green-50 text-green-700 border-green-200",
+    warning: "bg-amber-50 text-amber-700 border-amber-200",
+    error: "bg-red-50 text-red-700 border-red-200",
+    high: "bg-red-50 text-red-700 border-red-200",
+    medium: "bg-amber-50 text-amber-700 border-amber-200",
+    low: "bg-green-50 text-green-700 border-green-200"
   }
   
   const sizes = {
