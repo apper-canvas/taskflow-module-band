@@ -54,14 +54,15 @@ const taskData = {
       onSave(savedTask)
       
 if (!isEditing) {
-setFormData({
+        setFormData({
           title: "",
           description: "",
           priority: null,
           category: null,
           status: "active",
           dueDate: "",
-          tags: ""
+          tags: "",
+          color: null
         })
         setExpanded(false)
       }

@@ -1,13 +1,13 @@
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { toast } from "react-toastify"
-import Checkbox from "@/components/atoms/Checkbox"
-import Badge from "@/components/atoms/Badge"
-import Button from "@/components/atoms/Button"
-import TaskForm from "@/components/organisms/TaskForm"
-import ApperIcon from "@/components/ApperIcon"
-import { formatDueDate, getDueDateColor, isOverdue } from "@/utils/dateHelpers"
-import { getCategoryColor } from "@/utils/taskHelpers"
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { formatDueDate, getDueDateColor, isOverdue } from "@/utils/dateHelpers";
+import { getCategoryColor, getTaskColor } from "@/utils/taskHelpers";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
+import Checkbox from "@/components/atoms/Checkbox";
+import TaskForm from "@/components/organisms/TaskForm";
 
 const TaskItem = ({ task, onUpdate, onDelete, onToggleComplete }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -155,6 +155,15 @@ const dueDateFormatted = formatDueDate(task.dueDate)
               >
                 <ApperIcon name="Calendar" size={12} className="mr-1" />
                 {dueDateFormatted}
+              </Badge>
+            )}
+{task.color && (
+              <Badge
+                size="sm"
+                className={`${getTaskColor(task.color)} border-0`}
+              >
+                <ApperIcon name="Circle" size={12} className="mr-1" />
+                {task.color}
               </Badge>
             )}
           </div>
