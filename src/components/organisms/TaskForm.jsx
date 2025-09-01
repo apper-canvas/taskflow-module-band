@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { taskService } from "@/services/api/taskService";
+import { formatDateForInput } from "@/utils/dateHelpers";
 import ApperIcon from "@/components/ApperIcon";
-import PrioritySelector from "@/components/molecules/PrioritySelector";
 import CategorySelector from "@/components/molecules/CategorySelector";
+import PrioritySelector from "@/components/molecules/PrioritySelector";
+import Input from "@/components/atoms/Input";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
-import Input from "@/components/atoms/Input";
-import { formatDateForInput } from "@/utils/dateHelpers";
 
 const TaskForm = ({ task, onSave, onCancel, isEditing = false }) => {
 const [formData, setFormData] = useState({
@@ -18,7 +18,8 @@ const [formData, setFormData] = useState({
     category: task?.category || null,
     status: task?.status || "active",
     dueDate: task?.dueDate ? formatDateForInput(task.dueDate) : "",
-    tags: task?.tags || ""
+    tags: task?.tags || "",
+    color: task?.color || null
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [expanded, setExpanded] = useState(isEditing)
@@ -61,7 +62,7 @@ if (!isEditing) {
           category: null,
           status: "active",
           dueDate: "",
-          tags: "",
+tags: "",
           color: null
         })
         setExpanded(false)
@@ -182,12 +183,12 @@ if (!isEditing) {
               <option value="active">Active</option>
               <option value="completed">Completed</option>
               <option value="archived">Archived</option>
-            </Select>
+</Select>
           </div>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="dueDate" className="block text-sm font-medium text-gray-700 mb-2">
-              Due Date
             </label>
             <Input
               id="dueDate"
@@ -196,9 +197,48 @@ if (!isEditing) {
               onChange={(e) => handleInputChange("dueDate", e.target.value)}
             />
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <ApperIcon name="Palette" size={16} className="inline mr-1" />
+              Color
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {['blue', 'green', 'purple', 'pink', 'indigo', 'orange', 'teal', 'cyan'].map((color) => (
+                <button
+                  key={color}
+                  type="button"
+                  onClick={() => handleInputChange("color", formData.color === color ? null : color)}
+                  className={`relative w-8 h-8 rounded-full border-2 transition-all duration-200 ${
+                    formData.color === color 
+                      ? 'border-gray-400 scale-110' 
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                  style={{
+                    backgroundColor: {
+                      blue: '#3B82F6',
+                      green: '#10B981', 
+                      purple: '#8B5CF6',
+                      pink: '#EC4899',
+                      indigo: '#6366F1',
+                      orange: '#F97316',
+                      teal: '#14B8A6',
+                      cyan: '#06B6D4'
+                    }[color]
+                  }}
+                >
+                  {formData.color === color && (
+                    <ApperIcon name="Check" size={16} className="absolute inset-0 m-auto text-white" />
+                  )}
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Select a color to categorize your task</p>
+</div>
         </div>
-<div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">
               <ApperIcon name="Tag" size={16} className="inline mr-1" />
               Tags
             </label>
@@ -208,8 +248,9 @@ if (!isEditing) {
               placeholder="Enter tags separated by commas (e.g., urgent, work, review)"
               className="w-full"
             />
-            <p className="text-xs text-gray-500">Separate multiple tags with commas</p>
+<p className="text-xs text-gray-500">Separate multiple tags with commas</p>
           </div>
+
         <div className="flex justify-end gap-3 pt-2">
           {!isEditing && (
             <Button
