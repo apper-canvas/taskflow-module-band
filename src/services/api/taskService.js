@@ -58,6 +58,7 @@ Id: task.Id,
         category: task.category_c?.Name,
         tags: task.Tags,
         dueDate: task.due_date_c,
+        color: task.color_c,
         createdAt: task.created_at_c,
         completedAt: task.completed_at_c
       }))
@@ -109,6 +110,7 @@ title: task.title_c,
         category: task.category_c?.Name,
         tags: task.Tags,
         dueDate: task.due_date_c,
+        color: task.color_c,
         createdAt: task.created_at_c,
         completedAt: task.completed_at_c
       }
@@ -134,6 +136,7 @@ Name: taskData.title || "New Task",
           priority_c: taskData.priority,
           status_c: taskData.status || "active",
           due_date_c: taskData.dueDate || null,
+          color_c: taskData.color || null,
           created_at_c: new Date().toISOString(),
           completed_at_c: null,
           category_c: taskData.category ? taskData.category : null
@@ -175,6 +178,7 @@ title: task.title_c,
             category: task.category_c?.Name,
             tags: task.Tags,
             dueDate: task.due_date_c,
+            color: task.color_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c
           }
@@ -208,6 +212,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
       if (updates.priority !== undefined) updateData.priority_c = updates.priority
       if (updates.status !== undefined) updateData.status_c = updates.status
       if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
+      if (updates.color !== undefined) updateData.color_c = updates.color
       if (updates.category !== undefined) updateData.category_c = updates.category
       if (updates.tags !== undefined) updateData.Tags = updates.tags
       const params = {
@@ -249,6 +254,7 @@ title: task.title_c,
             category: task.category_c?.Name,
             tags: task.Tags,
             dueDate: task.due_date_c,
+            color: task.color_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c
           }
@@ -320,6 +326,7 @@ if (updates.title !== undefined) updateData.title_c = updates.title
         if (updates.priority !== undefined) updateData.priority_c = updates.priority
         if (updates.status !== undefined) updateData.status_c = updates.status
         if (updates.dueDate !== undefined) updateData.due_date_c = updates.dueDate
+        if (updates.color !== undefined) updateData.color_c = updates.color
         if (updates.category !== undefined) updateData.category_c = updates.category
         if (updates.tags !== undefined) updateData.Tags = updates.tags
         return updateData
@@ -355,6 +362,7 @@ title: task.title_c,
             category: task.category_c?.Name,
             tags: task.Tags,
             dueDate: task.due_date_c,
+            color: task.color_c,
             createdAt: task.created_at_c,
             completedAt: task.completed_at_c
           }
